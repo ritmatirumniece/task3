@@ -48,7 +48,7 @@ function computerPlay() {
   return selection[Math.floor(Math.random() * selection.length)];
 }
 
-function humanPlay() {
+function playerPlay() {
   const playerSelection = prompt(
     "Choose one - Rock, Paper, Scissors and type in...."
   ).toLowerCase();
@@ -59,15 +59,13 @@ function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     draw++;
     return `No one wins! You both have picked ${playerSelection}`;
-  } else if (playerSelection === "rock" && computerSelection === "scissors") {
+  } else if (
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "scissors" && computerSelection === "paper")
+  ) {
     playerScore++;
-    return `You win! Rock beats Scissors! Your score is ${playerScore}`;
-  } else if (playerSelection === "paper" && computerSelection === "rock") {
-    playerScore++;
-    return `You win! Paper beats Rock! Your score is ${playerScore}`;
-  } else if (playerSelection === "scissors" && computerSelection === "paper") {
-    playerScore++;
-    return `You win! Scissors beats Paper! Your score is ${playerScore }`;
+    return `You win! ${playerSelection} beats ${computerSelection}! Your score is ${playerScore}`;
   } else {
     computerScore++;
     return `You lose! ${computerSelection} beats ${playerSelection} Computer score is ${computerScore} !`;
@@ -77,9 +75,9 @@ function playRound(playerSelection, computerSelection) {
 function game() {
   for (let i = 1; i <= 5; i++) {
     const computerSelection = computerPlay();
-    const playerSelection = humanPlay();
+    const playerSelection = playerPlay();
     const roundResult = playRound(playerSelection, computerSelection);
-    console.log("round: ", i, "- result", roundResult);
+    console.log("round: ", i, "- result:", roundResult);
   }
   console.log("Score Card");
   console.log(
@@ -92,8 +90,10 @@ function game() {
   );
   if (playerScore > computerScore) {
     console.log("You win!");
-  } else {
+  } else if (playerScore < computerScore) {
     console.log("Computer wins!");
+  } else {
+    console.log("It is draw!");
   }
 }
 game();
