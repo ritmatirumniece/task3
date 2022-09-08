@@ -52,7 +52,7 @@ const game = () => {
   } else if(playerSelection === 'paper') {
   } else if(playerSelection === 'rock') {
   }
-  
+
   let computerSelection = [Math.floor(Math.random() * selection.length)];
   if (computerSelection === 'scissors') {
   } else if (computerSelection === 'paper'){
@@ -87,60 +87,5 @@ const playRound = (playerSelection, computerSelection) =>{
 
 
 
-// KAUT KAS NO IEPRIEKŠĒJĀ KODA
-// function computerPlay() {
-//   const selection = ["rock", "paper", "scissors"];
-//   return selection[Math.floor(Math.random() * selection.length)];
-// }
-
-// function playerPlay() {
-//   // const playerSelection = prompt(
-//   //   "Choose one - Rock, Paper, Scissors and type in...."
-//   // ).toLowerCase();
-//   return playerSelection;
-// }
-
-// function playRound(playerSelection, computerSelection) {
-//   if (playerSelection === computerSelection) {
-//     draw++;
-//     return `No one wins! You both have picked ${playerSelection}`;
-//   } else if (
-//     (playerSelection === "rock" && computerSelection === "scissors") ||
-//     (playerSelection === "paper" && computerSelection === "rock") ||
-//     (playerSelection === "scissors" && computerSelection === "paper")
-//   ) {
-//     playerScore++;
-//     return `You win! ${playerSelection} beats ${computerSelection}! Your score is ${playerScore}`;
-//   } else {
-//     computerScore++;
-//     return `You lose! ${computerSelection} beats ${playerSelection} Computer score is ${computerScore} !`;
-//   }
-// }
-
-// function game() {
-//   for (let i = 1; i <= 5; i++) {
-//     const computerSelection = computerPlay();
-//     const playerSelection = playerPlay();
-//     const roundResult = playRound(playerSelection, computerSelection);
-//     console.log("round: ", i, "- result:", roundResult);
-//   }
-  // console.log("Score Card");
-  // console.log(
-  //   "Player: ",
-  //   playerScore,
-  //   " - Computer: ",
-  //   computerScore,
-  //   " - Draw: ",
-  //   draw
-  // );
-//   if (playerScore > computerScore) {
-//     console.log("You win!");
-//   } else if (playerScore < computerScore) {
-//     console.log("Computer wins!");
-//   } else {
-//     console.log("It is draw!");
-//   }
-// }
-// game();
 
 
