@@ -1,99 +1,146 @@
-//diognal of square
 
-let aa = 9;
-let bb = 9;
-const d = Math.sqrt(aa ** 2 + bb ** 2);
-console.log(d);
+//PROJECT 
+let playerScore = 0;
+let computerScore = 0;
 
-//area of triangal
-let a = 5;
-let b = 6;
-let c = 7;
-const s = (a + b + c) / 2;
-const area = Math.sqrt(s * ((s - a) * (s - b) * (s - c)));
-console.log(area);
+const playerScoreSelector = document.querySelector('#playerScore');
+const computerScoreSelector = document.querySelector('#computerScore');
+const result = document.querySelector('#result');
 
-//circumference and surface area
-let r = 4;
-const C = 2 * Math.PI * r;
-const surfaceArea = Math.PI * r * r;
-console.log(C, surfaceArea);
+let playerSelection;
+const scissorsButton = document.querySelector('scissorsButton');
+const paperButton = document.querySelector('paperButton');
+const rockButton = document.querySelector('rockButton');
 
-//larger of the two
-// let num1, num2;
-// num1=window.prompt('Insert the First integer');
-// num2=window.prompt('Insert the Second integer');
-// if(num1>num2) {
-//     console.log(num1);
-// } else if (num2>num1) {
-//     console.log(num2);
-// }
+playerScoreSelector.innerHTML = playerScore;
+computerScoreSelector.innerHTML = computerScore;
 
-//even or odd
-// const number = prompt('Enter a number...')
-// if(number %2 ==0) {
-//     console.log('The number is even');
-// } else {
-//     console.log('The number is odd');
-// }
+scissorsButton.addEventListener('click', () =>{
+  playerSelection='scissors';
+  // console.log(playerSelection)
+  game();
+  if(playerScore === 5 || computerScore === 5) {
+    result.innerHTML = 'The game is over!';
+    // console.log(result.innerHTML);
+  }
+});
 
-//PROJECT
-let playerScore = 0,
-  computerScore = 0,
-  draw = 0,
-  result = 0;
+paperButton.addEventListener('click', () =>{
+  playerSelection='paper';
+  // console.log(playerSelection)
+  game();
+  if(playerScore === 5 || computerScore === 5) {
+    result.innerHTML = 'The game is over!';
+    // console.log(result.innerHTML);
+  }
+});
 
-function computerPlay() {
-  const selection = ["rock", "paper", "scissors"];
-  return selection[Math.floor(Math.random() * selection.length)];
+rockButton.addEventListener('click', () =>{
+  playerSelection='rock';
+  // console.log(playerSelection)
+  game();
+  if(playerScore === 5 || computerScore === 5) {
+    result.innerHTML = 'The game is over!';
+    // console.log(result.innerHTML);
+  }
+});
+
+
+
+const game = () => {
+  if(playerSelection === 'scissors') {
+  } else if(playerSelection === 'paper') {
+  } else if(playerSelection === 'rock') {
+  }
+  
+  let computerSelection = [Math.floor(Math.random() * selection.length)];
+  if (computerSelection === 'scissors') {
+  } else if (computerSelection === 'paper'){
+  } else if (computerSelection === 'rock'){
+  }
+  playRound(playerSelection, computerSelection);
+  return;
 }
 
-function playerPlay() {
-  const playerSelection = prompt(
-    "Choose one - Rock, Paper, Scissors and type in...."
-  ).toLowerCase();
-  return playerSelection;
-}
-
-function playRound(playerSelection, computerSelection) {
+const playRound = (playerSelection, computerSelection) =>{
   if (playerSelection === computerSelection) {
-    draw++;
-    return `No one wins! You both have picked ${playerSelection}`;
+    result.innerHTML = ` It is draw! No one wins! You both have picked ${playerSelection}`;
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
     (playerSelection === "scissors" && computerSelection === "paper")
   ) {
     playerScore++;
-    return `You win! ${playerSelection} beats ${computerSelection}! Your score is ${playerScore}`;
+    playerScoreSelector.innerHTML = playerScore;
+    result.innerHTML = `You win! ${playerSelection} beats ${computerSelection}!`;
   } else {
     computerScore++;
-    return `You lose! ${computerSelection} beats ${playerSelection} Computer score is ${computerScore} !`;
+    computerScoreSelector.innerHTML = computerScore;
+    result.innerHTML = `You lose! ${computerSelection} beats ${playerSelection}!`;
   }
-}
+  return
+};
 
-function game() {
-  for (let i = 1; i <= 5; i++) {
-    const computerSelection = computerPlay();
-    const playerSelection = playerPlay();
-    const roundResult = playRound(playerSelection, computerSelection);
-    console.log("round: ", i, "- result:", roundResult);
-  }
-  console.log("Score Card");
-  console.log(
-    "Player: ",
-    playerScore,
-    " - Computer: ",
-    computerScore,
-    " - Draw: ",
-    draw
-  );
-  if (playerScore > computerScore) {
-    console.log("You win!");
-  } else if (playerScore < computerScore) {
-    console.log("Computer wins!");
-  } else {
-    console.log("It is draw!");
-  }
-}
-game();
+
+
+
+
+
+
+// KAUT KAS NO IEPRIEKŠĒJĀ KODA
+// function computerPlay() {
+//   const selection = ["rock", "paper", "scissors"];
+//   return selection[Math.floor(Math.random() * selection.length)];
+// }
+
+// function playerPlay() {
+//   // const playerSelection = prompt(
+//   //   "Choose one - Rock, Paper, Scissors and type in...."
+//   // ).toLowerCase();
+//   return playerSelection;
+// }
+
+// function playRound(playerSelection, computerSelection) {
+//   if (playerSelection === computerSelection) {
+//     draw++;
+//     return `No one wins! You both have picked ${playerSelection}`;
+//   } else if (
+//     (playerSelection === "rock" && computerSelection === "scissors") ||
+//     (playerSelection === "paper" && computerSelection === "rock") ||
+//     (playerSelection === "scissors" && computerSelection === "paper")
+//   ) {
+//     playerScore++;
+//     return `You win! ${playerSelection} beats ${computerSelection}! Your score is ${playerScore}`;
+//   } else {
+//     computerScore++;
+//     return `You lose! ${computerSelection} beats ${playerSelection} Computer score is ${computerScore} !`;
+//   }
+// }
+
+// function game() {
+//   for (let i = 1; i <= 5; i++) {
+//     const computerSelection = computerPlay();
+//     const playerSelection = playerPlay();
+//     const roundResult = playRound(playerSelection, computerSelection);
+//     console.log("round: ", i, "- result:", roundResult);
+//   }
+  // console.log("Score Card");
+  // console.log(
+  //   "Player: ",
+  //   playerScore,
+  //   " - Computer: ",
+  //   computerScore,
+  //   " - Draw: ",
+  //   draw
+  // );
+//   if (playerScore > computerScore) {
+//     console.log("You win!");
+//   } else if (playerScore < computerScore) {
+//     console.log("Computer wins!");
+//   } else {
+//     console.log("It is draw!");
+//   }
+// }
+// game();
+
+
