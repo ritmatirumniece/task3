@@ -45,23 +45,21 @@ rockButton.addEventListener("click", () => {
   console.log(playerSelection);
   playRound(playerSelection);
   if (playerScore === 5) {
-    result.innerHTML = "The game is over! You win!";
-    console.log(result.innerHTML);
+    result.innerText = "The game is over! You win!";
+    console.log(result.innerText);
   } else if (computerScore === 5) {
-    result.innerHTML = "The game is over! Computer wins!";
-    console.log(result.innerHTML);
+    result.innerText = "The game is over! Computer wins!";
+    console.log(result.innerText);
   }
 });
 
-const game = () => {
-  if (playerSelection === "SCISSORS") {
-  } else if (playerSelection === "PAPER") {
-  } else if (playerSelection === "ROCK") {
-  }
-};
 function computerSelection() {
-  const selection = ["rock", "paper", "scissors"];
-  return selection[Math.floor(Math.random() * selection.length)];
+  let arr = ["ROCK", "PAPER", "SCISSORS"];
+  let randNum = Math.floor(Math.random() * arr.length);
+  let x = arr[randNum];
+  return x;
+  // const selection = ["ROCK", "PAPER", "SCISSORS"];
+  // return selection[Math.floor(Math.random() * selection.length)];
 }
 
 // let computerSelection = Math.floor(Math.random() * 3 ;
@@ -79,9 +77,16 @@ function computerSelection() {
 //   return;
 // };
 
+const game = () => {
+  if (playerSelection === "SCISSORS") {
+  } else if (playerSelection === "PAPER") {
+  } else if (playerSelection === "ROCK") {
+  }
+};
+
 function playRound(playerSelection) {
-  computerSelection = computerSelection();
-  if (playerSelection === computerSelection) {
+  computerSelection = computerSelection() 
+    if (playerSelection === computerSelection) {
     result.innerText = ` It is draw! No one wins! You both have picked ${playerSelection}`;
   } else if (
     (playerSelection === "ROCK" && computerSelection === "SCISSORS") ||
@@ -96,4 +101,7 @@ function playRound(playerSelection) {
     computerScoreSelector.innerText = computerScore;
     result.innerText = `You lose! ${computerSelection} beats ${playerSelection}!`;
   }
-}
+  return;
+};
+  
+
